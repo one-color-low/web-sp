@@ -10,17 +10,17 @@ addEventListener("DOMContentLoaded", function(){
         recieved_message.textContent = e.data;
         document.getElementById("holder").appendChild(recieved_message);
     };
-    document.getElementById("message_button").onclick = function(){
-        var message = document.getElementById("message").value;
-        ws.send(message)
-    }
+    addEventListener('keydown',
+        event => {
+            let pressed_key = event.key;
+            ws.send(String(pressed_key));
+        }
+    );
 });
 </script>
 </head>
 <body>
-<input type="text" id="message" value="text" />
-<input type="button" id="message_button" value="button" />
-<h3>Messages</h3>
+<h3>Input Key</h3>
 <div id="holder"></div>
 </body>
 </html>
